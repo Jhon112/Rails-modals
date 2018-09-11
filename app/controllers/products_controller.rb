@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    @products = Product.all
   end
 
   def alert_js
@@ -18,7 +19,7 @@ class ProductsController < ApplicationController
 
   private
     def product_params 
-      params.requite(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price)
     end
 
 
