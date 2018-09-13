@@ -13,6 +13,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.create(product_params)
+    respond_to do |format|
+      format.html {redirect_to products_path }
+    end
   end
 
   def edit
@@ -23,10 +26,14 @@ class ProductsController < ApplicationController
     @product = Product.update(params[:id], product_params)
   end
 
+  # def delete
+  #   @product = Product.destroy(params[:id])
+  # end
+
 
   private
     def product_params 
-      params.require(:product).permit(:name, :price)
+      params.require(:product).permit(:name, :price, :quantity, :costo, :published)
     end
 
 
