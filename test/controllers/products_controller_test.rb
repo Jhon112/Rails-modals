@@ -17,7 +17,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
   test "is refirected to login if user is not authenticated" do
     get products_path
-    assert_response
+    assert_response :redirect
   end
 
 end
