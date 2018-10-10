@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    respond_to do |format|
+      format.html
+      format.json {render json: { products: @products }, status: :ok }
+    end
   end
 
   def alert_js
@@ -29,9 +33,9 @@ class ProductsController < ApplicationController
     @product = Product.update(params[:id], product_params)
   end
 
-  # def delete
-  #   @product = Product.destroy(params[:id])
-  # end
+  def delete
+    @product = Product.destroy(params[:id], product_params)
+  end
 
 
   private
